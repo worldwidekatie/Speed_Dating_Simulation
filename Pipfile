@@ -8,6 +8,11 @@ verify_ssl = true
 [packages]
 pandas = "*"
 matplotlib = "*"
+sklearn = "*"
+numpy = "*"
+scipy = "*"
+category-encoders = "*"
+joblib = "*"
 
 [requires]
 python_version = "3.8"
