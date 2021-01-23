@@ -1,23 +1,20 @@
-import category_encoders as ce
-
-from joblib import load
 import json
-import random
+from pprint import pprint
+import pandas as pd
 
-from sklearn.impute import SimpleImputer
-from sklearn.pipeline import make_pipeline
-from sklearn.ensemble import RandomForestClassifier
+locations = json.load(open("data/locations.json"))
+men = json.load(open("data/men.json"))
+women = json.load(open("data/women.json"))
 
-# w_model = joblib.load('assets/women.joblib')
+men = pd.DataFrame(men).T
+women = pd.DataFrame(women).T
 
+print(men['location'].value_counts())
+print(women['location'].value_counts())
 
-men = open('data/men.json', 'r')
-men = json.load(men)
-men.close()
-print(men)
+print(men['status'].value_counts())
+print(women['status'].value_counts())
 
-# with open('data/women.json') as f:
-#   women = json.load(f)
-#   print(women)
+# print(men)
 
-
+# print(women)
