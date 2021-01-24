@@ -1,18 +1,11 @@
-# import category_encoders as ce
-# import joblib
 import json
-# import numpy as np
-# import pandas as pd
 import random
 
-# from sklearn.impute import SimpleImputer
-# from sklearn.pipeline import make_pipeline
-# from sklearn.ensemble import RandomForestClassifier
-
 from behaviors.reset import resets
+from views.analysis import results
 from behaviors.go_outs import go_out
 from behaviors.dates import date
-# from behaviors.breakups import breakup
+from behaviors.breakups import breakup
 
 
 
@@ -43,15 +36,22 @@ def simulate():
 
         men = json.load(open("data/men.json","r"))
         women = json.load(open("data/women.json","r"))
-        
+
         people = list(men.keys()) + list(women.keys())
         random.shuffle(people)
 
         for i in people:
             go_out(i)
-    
+
+        print("**** New Couples ****")
         for i in people:
             date(i)
+        results()
+
+        print("**** Break-ups ****")
+        for i in people:
+            breakup(i)
+        results()
 
         globals_['step'] += 1
         if (globals_['step']/globals_['date_frequency']) % 52 == 0:

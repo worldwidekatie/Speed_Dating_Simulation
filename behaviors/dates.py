@@ -157,11 +157,11 @@ def date(person):
             if locations[men[person]['location']]["available_women"] != 0:
                 partner = random.choice(locations[men[person]['location']]["women"])              
                 if compat(person, partner, locations, men, women) == 1:
-                    print(person, partner)
+                    print(f"{person} + {partner} = <3")
                     men[person]['status'] = 'taken'
                     men[person]['partner'] = partner
                     women[partner]['status'] = 'taken'
-                    women[partner]['partner'] = partner
+                    women[partner]['partner'] = person
                     locations[men[person]['location']]["available_women"] -= 1
                     locations[men[person]['location']]["available_men"] -= 1
 
@@ -182,7 +182,7 @@ def date(person):
             if locations[women[person]['location']]["available_men"] != 0:
                 partner = random.choice(locations[women[person]['location']]["men"])
                 if compat(person, partner, locations, men, women) == 1:
-                    print(person, partner)
+                    print(f"{person} + {partner} = <3")
                     women[person]['status'] = 'taken'
                     women[person]['partner'] = partner
                     men[partner]['status'] = 'taken'
